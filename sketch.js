@@ -133,6 +133,7 @@ let points;
 let bestSet = 0
 
 //map variables
+let superDis = 250000
 let correctDis = 1000000
 let wrongDis = 6000000
 var answerLine;
@@ -190,6 +191,7 @@ let setMarkers = [];
 let setLineColors = [];
 
 function setup() {
+  console.log("changed")
   noCanvas();
   //leaflet map
   map = L.map("map").setView([0, 0], 1);
@@ -295,7 +297,6 @@ function setup() {
   
   changeMapSize()
 
-  console.log("started")
 }
 
 function draw() {
@@ -445,7 +446,10 @@ function afterGuess() {
 
       //save line colors
       let lineCol = "black"
-      if (totalDistance <= correctDis) {
+      if (totalDistance <= superDis) {
+        lineCol = "yellow"
+      }
+      else if (totalDistance <= correctDis) {
         lineCol = "green"
       }
       else if (totalDistance >= wrongDis) {
@@ -493,13 +497,16 @@ function afterGuess() {
   answermarker = L.marker([randomlocation.lat, randomlocation.lng], {icon: answerIcon}).addTo(map);
 
   let lineCol = "black"
-  if (totalDistance <= correctDis) {
+  if (totalDistance <= superDis) {
+    lineCol = "yellow"
+  }
+  else if (totalDistance <= correctDis) {
     lineCol = "green"
   }
   else if (totalDistance >= wrongDis) {
     lineCol = "red"
   }
-  
+
   //show a line from the clicked point to the answer
   answerLine = L.polyline([[randomlocation.lat, randomlocation.lng],[clickedPoint.lat, clickedPoint.lng]], {
     color: lineCol,
