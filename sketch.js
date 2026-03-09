@@ -191,7 +191,6 @@ let setMarkers = [];
 let setLineColors = [];
 
 function setup() {
-  console.log("changed")
   noCanvas();
   //leaflet map
   map = L.map("map").setView([0, 0], 1);
@@ -447,7 +446,7 @@ function afterGuess() {
       //save line colors
       let lineCol = "black"
       if (totalDistance <= superDis) {
-        lineCol = "yellow"
+        lineCol = "purple"
       }
       else if (totalDistance <= correctDis) {
         lineCol = "green"
@@ -498,7 +497,7 @@ function afterGuess() {
 
   let lineCol = "black"
   if (totalDistance <= superDis) {
-    lineCol = "yellow"
+    lineCol = "purple"
   }
   else if (totalDistance <= correctDis) {
     lineCol = "green"
