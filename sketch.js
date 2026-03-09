@@ -134,6 +134,7 @@ let bestSet = 0
 
 //map variables
 let correctDis = 1000000
+let wrongDis = 6000000
 var answerLine;
 let answerPadding = 50
 let mapOriginalHeight = 300
@@ -446,6 +447,10 @@ function afterGuess() {
       if (totalDistance <= correctDis) {
         lineCol = "green"
       }
+      else if (totalDistance >= wrongDis) {
+        lineCol = "red"
+      }
+
       setLineColors.push(lineCol)
     }
     //end set and reset all variables
@@ -490,6 +495,10 @@ function afterGuess() {
   if (totalDistance <= correctDis) {
     lineCol = "green"
   }
+  else if (totalDistance >= wrongDis) {
+    lineCol = "red"
+  }
+
   //show a line from the clicked point to the answer
   answerLine = L.polyline([[randomlocation.lat, randomlocation.lng],[clickedPoint.lat, clickedPoint.lng]], {
     color: lineCol,
