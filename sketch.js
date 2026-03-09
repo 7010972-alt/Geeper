@@ -499,6 +499,8 @@ function afterGuess() {
     lineCol = "red"
   }
 
+  console.log(lineCol)
+
   //show a line from the clicked point to the answer
   answerLine = L.polyline([[randomlocation.lat, randomlocation.lng],[clickedPoint.lat, clickedPoint.lng]], {
     color: lineCol,
